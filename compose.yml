@@ -31,9 +31,14 @@ services:
     networks:
       - monitor
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
       - /sys:/sys:ro
       - /var/lib/docker:/var/lib/docker:ro
+      - /var/run:/var/run:ro
+  
+  node_exporter:
+    image: prom/node-exporter:latest
+    networks:
+      - monitor
 
   prometheus:
     image: prom/prometheus:latest
